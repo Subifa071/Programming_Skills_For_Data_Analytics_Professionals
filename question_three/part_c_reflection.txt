@@ -1,0 +1,19 @@
+Part C – Reflection
+
+Why the Luhn Algorithm is Widely Used in Banking and Identification Systems:
+The Luhn algorithm is used extensively in banking, particularly for credit card and account number validation. It serves as a simple yet effective checksum formula for detecting accidental errors like mistyped digits. By performing a modulo 10 check, the algorithm ensures that valid numbers conform to a specific structure, allowing for the detection of common errors.
+
+Advantages of the Luhn Algorithm:
+
+Error Detection: The Luhn algorithm is effective at detecting errors in long sequences like credit card numbers. It can detect single-digit errors and simple transpositions of adjacent digits.
+
+Simplicity: The algorithm is computationally inexpensive, making it ideal for use in real-time systems like online banking or point-of-sale systems.
+
+Limitations of the Luhn Algorithm:
+
+Transposition Errors: The Luhn algorithm cannot detect transpositions of non-adjacent digits (e.g., switching the 3rd and 5th digits of a number).
+
+Not a Security Measure: While it catches simple errors, it does not provide any level of security, such as encryption or authentication, and can be easily bypassed by fraudsters.
+
+Improvement Suggestions:
+To improve the Luhn algorithm, I would propose combining it with additional fraud detection techniques, such as using a second algorithm to detect digit transpositions or checking the consistency of numbers against known patterns in the data. This could help increase the accuracy of detecting accidental or intentional errors.

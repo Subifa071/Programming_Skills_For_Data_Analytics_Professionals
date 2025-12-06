@@ -1,0 +1,12 @@
+Question 2
+Write a program to create the wheel of fortune. The following requirements must be met:
+1. The software shall let the user decide a word or phrase for the player to guess.
+2. The software shall allow the player to “spin a virtual wheel” to get a point value.
+3. The software shall allow the player to guess a letter for the word or phrase.
+4. The software shall ensure that if the letter is in the word or phrase, they earn points based
+on the number of occurrences of that letter multiplied by the spun point value.
+5. The software shall ensure that the game ends when the player has guessed the entire
+word or phrase. (15 marks)
+This section should be completed independently, without the use of AI tools.
+
+16:50-17:30

@@ -1,0 +1,70 @@
+Question 5
+You are an analyst at a retail company that sells a diverse range of products across multiple
+regions. Management has requested an automated Excel report to evaluate sales performance,
+costs, discounts, and profits for all product categories.
+Your task is to create and automate this report in Excel while demonstrating your problem-solving
+and data handling skills.
+A. Excel Worksheet Setup
+1. Create an Excel workbook with the following columns:
+Product | Region | Units Sold | Unit Price | Manufacturing Cost | Revenue | Discount | Profit.
+2. Populate the first five columns ensuring:
+o Product: 25 distinct products, with 5 from each category: Electronics, Furniture,
+Apparel, Food, and Stationery.
+o Region: Assign each product to a region: Asia, Europe, Africa, North America, or
+South America.
+o Units Sold: Randomly select numbers between 50 and 800 units.
+o Unit Price (UK £): Randomly select numbers between £20 and £150.
+o Manufacturing Cost (UK £/unit): Randomly select numbers between £5 and £100.
+3. Business Rule: Products with Units Sold > 400 are eligible for a 10% sales discount applied
+to total revenue.
+B. VBA Macro Development
+• Develop a VBA macro that:
+1. Calculates Revenue = Units Sold × Unit Price
+2. Calculates Total Cost = Units Sold × Manufacturing Cost
+3. Applies Discount according to the business rule.
+4. Calculates Profit = Revenue − Total Cost − Discount
+• The macro must be able to process all rows automatically.
+C. Execution and Documentation
+1. 2. Run the macro to populate Revenue, Discount, and Profit.
+Prepare a short process report including:
+o How the dataset was created and structured
+o How the macro was designed and coded
+o Explanation of discount logic and profit calculations
+D. Submission Requirements
+• Submit:
+1. 2. 3. Excel workbook showing data before and after macro execution.
+Word document containing the VBA code from the editor.
+A process report describing your approach, challenges, and rationale.
+Important Note:
+• You must generate your own dataset not syndicated or smart dataset; using AI to
+produce the data, Excel formulas, or VBA code is strictly prohibited.
+• The goal is to demonstrate practical Excel and VBA skills in a real business scenario.
+• This task also embeds sustainability and inclusivity elements: students will work with
+diverse regional/product data and apply responsible business logic (e.g., discount rules),
+ensuring outputs are fair, transparent, and inclusive.
+(20 marks)
+Students would find the following Python projects websites useful:
+i. https://www.freecodecamp.org/news/python-projects-for-beginners/
+ii. https://www.dataquest.io/blog/python-projects-for-beginners/
+Below are some best practices for writing journals:
+• Clarity and Conciseness: Ensure the documentation is clear and to the point.
+• Consistency: Maintain a consistent style and format throughout the document.
+• Comprehensive Coverage: Cover all aspects of the project, including objectives,
+implementation, testing, and results.
+• Use of Visuals: Incorporate diagrams, charts, and screenshots to enhance understanding.
+The links following should provide you with some methods and rationale of creating journals.
+i. https://dev.to/tekiegirl/series/2452
+ii. https://www.codingrobots.com/memoires/write-journal/
+iii. https://opensource.com/article/20/1/python-journal
+For question 5, the following links will be of immense help:
+1. Excel Easy – VBA Tutorial
+https://www.excel-easy.com/vba.html
+(This is a beginner-friendly step-by-step tutorial website. It covers VBA
+fundamentals, loops, conditional statements, and user-defined functions. It also
+includes business-oriented examples, such as automating reports, calculating
+profits, and handling data tables).
+2. AnalystCave – VBA for Business Applications
+https://www.analystcave.com/category/vba/
+(This link focuses on real-world business and finance VBA applications. Examples
+include automating dashboards, sales reporting, and data analysis tasks. It also has the
+option to download Excel workbooks and VBA code samples).

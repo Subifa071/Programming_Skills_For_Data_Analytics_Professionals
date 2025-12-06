@@ -1,0 +1,33 @@
+Instruction: You must write your own Python code (no imports of external libraries for Luhn). Your
+code should be clear, well-documented (using comments), and produce readable outputs.
+You may use AI tools for this section only as a developmental purpose (i.e. to help you
+comprehend the concept.
+Part B – Real-Life Banking Case Study (7 marks)
+A bank is processing new customer account numbers and credit card numbers. Some numbers
+are flagged as invalid after running through your Luhn validation program.
+Extend your Python program to:
+1. Identify which of the given sequences would be rejected by the bank system.
+2. For each invalid sequence, print the corrected account/credit card number (original digits
+plus the right validation digit).
+3. Determine which number would require the largest correction (validation digit furthest
+from 0).
+4. In a short explanation (in code comments or a short print statement), discuss how the Luhn
+algorithm protects the bank from common data entry errors and potential fraud (e.g.,
+mistyped digits, single-digit mistakes).
+Hint: Think about how the algorithm can detect accidental errors in long sequences like real credit
+card numbers.
+This section should be completed independently, without the use of AI tools.
+Part C – Reflection (not more than 200 words) (5 marks)
+In a short-written reflection, discuss:
+• Why the Luhn algorithm is widely used in banking and identification systems.
+• Advantages of the algorithm you noticed while coding it (e.g., error detection, simplicity).
+• Limitations you encountered (e.g., some digit transpositions go undetected).
+• If you were to design an improved version, what modification would you suggest and why?
+You may use AI tools for this section only as a developmental purpose (i.e. to help you
+comprehend the concept.
+
+Final Notes:
+
+This program will provide the functionality for validating, correcting, and analyzing customer account numbers using the Luhn algorithm.
+
+It helps in detecting errors in long sequences like credit card numbers, ensuring that mistakes in input data (such as mistyped digits) are caught before being processed.
