@@ -1,32 +1,18 @@
-# import yfinance as yf
-
-# data = yf.download (['NVDA','AAPL','MSFT','AMZN','GOOGL','AVGO','GOOG','META','TSLA','BRK-B'], period = "10y", interval="1d")
-# print(data,'DATATA')
 import pandas as pd
 import numpy as np
 import yfinance as yf
 
-# ============================================================
-# CONFIG (easy to edit)
-# ============================================================
-
-# Your chosen 10 companies (all are in the S&P 500)
+# List of 10 companies from the S&P 500
 TICKERS = ['NVDA','AAPL','MSFT','AMZN','GOOGL','AVGO','GOOG','META','TSLA','BRK-B']
 
-# Assignment requirements
 PERIOD = "10y"        # last 10 years
 INTERVAL = "1d"       # daily data
-FORWARD_DAYS = 50     # hold period (50 days)
+FORWARD_DAYS = 50     # 50 days holding period
 
-# SMA periods to test (you can change these)
-SMA_PERIODS = list(range(10, 201, 5))  # 10..200 step 5
+# SMA periods to test (simple moving averages only)
+SMA_PERIODS = list(range(10, 201, 5))  # 10..200 step 5, 10 to 200 days
 
-
-# ============================================================
-# 1) Download Yahoo Finance data (10 years daily)
-# ============================================================
-# yfinance returns a DataFrame with multi-level columns when you download multiple tickers.
-# Example: data["Close"]["AAPL"] gives AAPL close series.
+# Download Yahoo Finance data (10 years daily)
 data = yf.download(
     TICKERS,
     period=PERIOD,
@@ -34,46 +20,43 @@ data = yf.download(
     progress=False
 )
 
-# Basic validation (good practice)
 if data.empty:
     raise RuntimeError("No data was downloaded. Check internet or ticker symbols.")
 
-# Extract Close prices only (we only need Close for SMA and returns)
+# Extract Close prices only (we only need Close for SMA and return calculations)
 close_df = data["Close"].dropna(how="all")
 
 
-# ============================================================
-# 2) Function: find the best SMA period for a single stock
-# ============================================================
+# Find the best SMA period for a single stock
 def best_sma_for_stock(close: pd.Series, sma_periods, forward_days=50):
     """
     For one stock:
     - For each SMA period p:
         * Compute SMA(p)
-        * Signal day = Close > SMA(p)   (assignment requirement)
+        * Signal day = Close > SMA(p)  
         * Compute forward return for 50 days:
-              forward_return[t] = Close[t+50] / Close[t] - 1
+            forward_return[t] = Close[t+50] / Close[t] - 1
         * Score this SMA period by average forward return on signal days
     - Return the SMA period with the highest score.
     """
     close = close.dropna()
 
-    # Need enough data for the largest SMA plus the forward holding period
+    # Ensure if there is enough historical data
     if len(close) < max(sma_periods) + forward_days + 5:
         return None
 
-    # Forward 50-day return series aligned to today (t)
+    # Forward 50-day return aligned to today (t)
     forward_ret = close.shift(-forward_days) / close - 1
 
     best_period = None
     best_avg = -np.inf
     best_signals = 0
 
-    # Test each SMA window length
+    # Test each SMA period
     for p in sma_periods:
         sma = close.rolling(window=p, min_periods=p).mean()
 
-        # Signal days: Close > SMA (as stated in the assignment)
+        # Signal days: Close > SMA 
         signal = close > sma
 
         # Only keep days where signal is true and forward return is known
@@ -100,9 +83,7 @@ def best_sma_for_stock(close: pd.Series, sma_periods, forward_days=50):
     }
 
 
-# ============================================================
-# 3) Compute best SMA for each of your 10 stocks
-# ============================================================
+# Compute best SMA for each of your 10 stocks
 results = []
 
 for ticker in TICKERS:
@@ -121,12 +102,7 @@ if results_df.empty:
     raise RuntimeError("No results were produced. Possibly insufficient data for all tickers.")
 
 
-# ============================================================
-# 4) Enforce "same SMA period" for the portfolio of 10
-# ============================================================
-# Since YOU fixed the portfolio to exactly these 10 stocks,
-# the best way to meet the "same SMA period" condition is:
-#
+# Enforce "same SMA period" for the portfolio of 10
 # - Evaluate each SMA period across all 10 stocks,
 # - Compute the portfolio score (mean of the 10 average forward returns),
 # - Choose the SMA period that maximises portfolio return.
@@ -142,7 +118,7 @@ for p in SMA_PERIODS:
 
         close = close_df[ticker].dropna()
 
-        # Need enough data for this SMA + forward period
+        # Ensure enough data for this SMA + forward period
         if len(close) < p + FORWARD_DAYS + 5:
             continue
 
@@ -156,7 +132,7 @@ for p in SMA_PERIODS:
 
         per_stock_returns.append(float(r.mean()))
 
-    # Only accept SMA periods that work for ALL 10 stocks (strict interpretation)
+    # Only accept SMA periods that work for ALL 10 stocks 
     if len(per_stock_returns) == len(TICKERS):
         portfolio_scores.append({
             "SMA_Period": p,
@@ -168,15 +144,14 @@ portfolio_scores_df = pd.DataFrame(portfolio_scores).sort_values(
 )
 
 if portfolio_scores_df.empty:
-    print("⚠️ No SMA period worked for all 10 stocks. Relax the strict condition if needed.")
+    print("No SMA period worked for all 10 stocks. Relax the strict condition if needed.")
 else:
     chosen_sma_period = int(portfolio_scores_df.iloc[0]["SMA_Period"])
     print(f"\nChosen common SMA period for the portfolio: {chosen_sma_period} days\n")
 
 
-# ============================================================
-# 5) Outputs for evidence (CSV files)
-# ============================================================
+# ----- Outputs (CSV files) -----
+
 # Output 1: each stock’s best SMA period and score
 results_df.to_csv("best_sma_per_stock.csv", index=False)
 
@@ -184,12 +159,12 @@ results_df.to_csv("best_sma_per_stock.csv", index=False)
 portfolio_scores_df.to_csv("portfolio_sma_scores.csv", index=False)
 
 print("Saved output files:")
-print("- best_sma_per_stock.csv")
-print("- portfolio_sma_scores.csv")
+print("best_sma_per_stock.csv")
+print("portfolio_sma_scores.csv")
 
-print("\nBest SMA for each stock (per-stock optimisation):\n")
+print("\nBest SMA for each stock (per stock optimisation):\n")
 print(results_df.to_string(index=False))
 
 if not portfolio_scores_df.empty:
-    print("\nTop SMA periods for the whole 10-stock portfolio:\n")
+    print("\nTop SMA periods for the whole 10 stock portfolio:\n")
     print(portfolio_scores_df.head(10).to_string(index=False))
