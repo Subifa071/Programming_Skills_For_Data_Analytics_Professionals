@@ -44,3 +44,60 @@ Ensure that you handle edge cases (e.g., shifting by 0, very large numbers, or n
 Make the code modular and readable to demonstrate a good understanding of programming principles.
 
 16:00, 06/12
+
+NEWWWW
+
+📘 Journal – Question 1: Parameterised Cipher
+
+Start Date & Time:
+08 January 2026 – 14:30
+
+End Date & Time:
+08 January 2026 – 16:00
+
+Task Description
+
+The goal of this task was to design and implement a parameterised substitution cipher in Python. The program needed to shift alphabetic characters by a user-defined number of positions while demonstrating modular programming through separate files.
+
+Implementation Details
+
+Created a separate module (cipher_function.py) containing a parametrised function to perform the cipher logic.
+
+Used ASCII values and modulo arithmetic to correctly wrap characters within the alphabet.
+
+Preserved uppercase, lowercase, and non-alphabetic characters.
+
+Imported the cipher function into the main program (cipher.py).
+
+Implemented user prompts for input text and shift value.
+
+Added input validation to prevent runtime errors from invalid user input.
+
+Challenges Encountered
+
+Ensuring correct wrap-around logic when shifting characters near the end of the alphabet.
+
+Handling invalid user input for the shift value.
+
+Maintaining readability while keeping the function generic and reusable.
+
+How Challenges Were Addressed
+
+Used modulo 26 arithmetic to ensure correct alphabetical wrapping.
+
+Implemented a try-except block to validate integer input.
+
+Added detailed comments and docstrings for clarity.
+
+Time Management
+
+Initial design and logic planning: ~30 minutes
+
+Function implementation and testing: ~30 minutes
+
+Input validation and documentation: ~30 minutes
+
+Use of AI Tools
+
+AI tools were consulted for background understanding of substitution ciphers and ASCII manipulation.
+All code was written manually and adapted to ensure full understanding and compliance with the assignment requirements.

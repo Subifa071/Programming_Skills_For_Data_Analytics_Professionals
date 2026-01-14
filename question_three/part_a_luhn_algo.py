@@ -1,16 +1,31 @@
+"""
+Implements the Luhn (mod 10) algorithm to:
+    - Validate account / credit card numbers
+    - Compute the required validation digit
+"""
 # Function to calculate the checksum using the Luhn algorithm
 def luhn_algorithm(account_number):
+    """
+    Applies the Luhn algorithm to determine validity.
+
+    Parameters:
+        number (int or str): Account or card number without validation digit
+    Returns:
+        tuple: (is_valid (bool), checksum_total (int))
+    """
+
     digits = [int(digit) for digit in str(account_number)]  # Convert number to list of digits
-    checksum = 0
     # Reverse the digits for processing from right to left
     digits.reverse()
+
+    checksum = 0
 
     # Step 1: Double every second digit and sum its digits
     for i in range(len(digits)):
         if i % 2 == 1:  # Every second digit (starting from the right)
             doubled = digits[i] * 2
             # Add the sum of the digits of the doubled number (e.g., 14 -> 1 + 4)
-            checksum += doubled // 10 + doubled % 10
+            checksum += doubled // 10 + doubled % 10 #why
         else:
             checksum += digits[i]  # Add non-doubled digits
 

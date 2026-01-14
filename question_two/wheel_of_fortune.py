@@ -1,3 +1,18 @@
+"""
+Objective:
+- Allow a user to set a word or phrase
+- Let the player spin a virtual wheel to earn points
+- Guess letters to reveal the word
+- Award points based on letter occurrences
+- End the game when the full word/phrase is guessed
+
+This program demonstrates:
+- Control structures
+- Functions
+- Input validation
+- Random number generation
+"""
+
 import random
 
 # Function to simulate spinning the wheel
@@ -6,14 +21,40 @@ def spin_wheel():
     wheel_values = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
     return random.choice(wheel_values)
 
-# Function to display the word/phrase with underscores
 def display_word(word, guessed_letters):
-    return ' '.join([letter if letter in guessed_letters else '_' for letter in word])
+    """
+    Displays the current state of the word or phrase.
+    Letters that have not been guessed are shown as underscores.
 
-# Function to play the Wheel of Fortune game
+    Parameters:
+        word (str): The target word or phrase
+        guessed_letters (set): Letters guessed so far
+
+    Returns:
+        str: Formatted string with revealed letters and underscores
+    """
+
+    return ' '.join(
+        [letter if letter in guessed_letters else '_' for letter in word]
+        )
+
+# Main game logic for Wheel of Fortune.
 def play_game():
+
     # Step 1: Get word or phrase from the player
-    word = input("Enter a word or phrase for the player to guess: ").lower()
+    while True:
+        word = input("Enter a word or phrase for the player to guess: ").lower()
+
+        # Remove spaces for validation
+        cleaned_word = word.replace(" ", "")
+
+        if not cleaned_word:
+            print("Word or phrase cannot be empty.")
+        elif not cleaned_word.isalpha():
+            print("Only words or phrases are allowed.")
+        else:
+            break
+
     guessed_letters = set()  # Track guessed letters
     total_points = 0  # Track total points
     attempts_left = len(word) + 5  # Allow a few extra guesses
@@ -44,7 +85,7 @@ def play_game():
         
         guessed_letters.add(guess)  # Add the guessed letter to the set
         
-        # Step 5: Check if the guessed letter is in the word
+        # Step 5: Check if the guessed letter is in the word (Score)
         if guess in word:
             occurrences = word.count(guess)  # Count how many times the letter appears in the word
             points = occurrences * spin_value
@@ -70,6 +111,3 @@ def play_game():
 # Run the game
 if __name__ == "__main__":
     play_game()
-
-
-# Handling of special characters
