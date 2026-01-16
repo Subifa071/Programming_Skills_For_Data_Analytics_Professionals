@@ -1,4 +1,5 @@
-# STEP 1: CREATE EXCEL DATA FILE
+# Step 1: Create Excel data file with Product, Category, Regions, Units Sold, Unit Price (£), 
+# Manufacturing Cost (£), Revenue (£), Discount (£), and Profit (£).
 import pandas as pd
 import numpy as np
 import random
