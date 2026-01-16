@@ -5,5 +5,6 @@
 Generate/update `requirements.txt`:
 
 ```bash
+pip install -r requirements.txt
 pip freeze > requirements.txt
 ```
