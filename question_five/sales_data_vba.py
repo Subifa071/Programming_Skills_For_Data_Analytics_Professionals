@@ -1,7 +1,4 @@
-# ============================================================================
 # STEP 1: CREATE EXCEL DATA FILE
-# ============================================================================
-
 import pandas as pd
 import numpy as np
 import random
@@ -81,7 +78,9 @@ print("\n" + "=" * 70)
 print("READY FOR EXCEL SETUP!")
 print("=" * 70)
 
-"""
+""" 
+Code for Excel (Macro Execution)
+
 Sub Calculate_Sales_Report()
 
     Dim ws As Worksheet
