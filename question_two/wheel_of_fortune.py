@@ -1,18 +1,3 @@
-"""
-Objective:
-- Allow a user to set a word or phrase
-- Let the player spin a virtual wheel to earn points
-- Guess letters to reveal the word
-- Award points based on letter occurrences
-- End the game when the full word/phrase is guessed
-
-This program demonstrates:
-- Control structures
-- Functions
-- Input validation
-- Random number generation
-"""
-
 import random
 
 # Function to simulate spinning the wheel

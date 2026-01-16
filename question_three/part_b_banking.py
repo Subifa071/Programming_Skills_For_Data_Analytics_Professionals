@@ -18,11 +18,17 @@ def find_largest_correction(account_numbers):
     for number in account_numbers:
         valid, checksum = luhn_algorithm(number)
         if not valid:
+            # Compute the correct check digit
             validation_digit = find_validation_digit(number)
-            correction = abs(validation_digit - (number % 10))  # Calculate correction required
+
+            # Compare it with the current last digit of the number
+            correction = abs(validation_digit - (number % 10)) 
+
+            # Track the number requiring the biggest adjustment
             if correction > largest_correction:
                 largest_correction = correction
                 largest_correction_number = number
+
             print(f"Original Account: {number}, Corrected Account: {str(number) + str(validation_digit)}")
 
     return largest_correction_number, largest_correction

@@ -2,22 +2,6 @@
 from cipher_helpers import shift_cipher
 
 def main():
-    """
-    Main program for the Parameterised Cipher exercise.
-
-    Objective:
-        - Prompt the user to enter a word or phrase
-        - Ask for a shift value (X)
-        - Apply a substitution cipher
-        - Display the scrambled result
-
-    This program demonstrates:
-        - Modular programming
-        - User input handling
-        - Function importing
-        - Clear program flow
-    """
-
     # Step 1: Prompt user for input
     # The input can include spaces and punctuation
     word = input("Enter a word to scramble: ")  # Word to scramble
@@ -38,7 +22,7 @@ def main():
     # Step 4: Apply the cipher using the imported helper function
     scrambled_word = shift_cipher(word, shift)
 
-    # S: Print the scrambled word
+    # Print the scrambled word
     print(f"The scrambled word is: {scrambled_word}")
 
 # Ensures this file runs only when executed directly
