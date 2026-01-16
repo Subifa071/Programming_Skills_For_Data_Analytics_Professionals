@@ -25,4 +25,5 @@ def shift_cipher(word, shift):
             # Preserve spaces, punctuation, and digits
             result.append(char)
 
+    # Convert list of characters back into a string
     return ''.join(result)
